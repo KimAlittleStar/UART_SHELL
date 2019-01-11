@@ -38,7 +38,9 @@ private slots:
 private:
 
     bool  eventFilter(QObject* target,QEvent * event);
+    const QString emptyStr = "";
     QVector<QString> history;
+    QVector<QString> quickComplets;
     int historyNum;
     int maxline;
     Ui::Widget *ui;
@@ -46,6 +48,8 @@ private:
     QSerialPort* activePort;
     QString receiveBuff;
     int baud;
+    const QString & findQuickCompletString(const QString & str);
+
 };
 
 #endif // WIDGET_H

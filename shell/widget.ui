@@ -287,6 +287,55 @@
     <attribute name="title">
      <string>设置</string>
     </attribute>
+    <widget class="QLabel" name="lable_quickCompelatList">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>97</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>快捷补全列表</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="cBox_quickCompelatList">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>130</y>
+       <width>171</width>
+       <height>24</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pButton_AddquickCompelat">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>170</y>
+       <width>71</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>新增</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pButton_delquickCompelat">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>170</y>
+       <width>81</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>删除当前</string>
+     </property>
+    </widget>
     <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
