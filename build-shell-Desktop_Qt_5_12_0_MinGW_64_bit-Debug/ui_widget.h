@@ -11,11 +11,13 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTextEdit>
@@ -44,13 +46,19 @@ public:
     QFrame *line;
     QWidget *tab_Set;
     QLabel *lable_quickCompelatList;
-    QComboBox *cBox_quickCompelatList;
     QPushButton *pButton_AddquickCompelat;
     QPushButton *pButton_delquickCompelat;
-    QWidget *widget;
+    QCheckBox *checkBox_autoConect;
+    QPlainTextEdit *plaintEdit_quickCompleat;
+    QCheckBox *checkBox_caseSensitive;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout;
+    QLabel *label_colorlist;
+    QComboBox *cBox_ColorList;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_2;
     QLabel *label;
-    QComboBox *comboBox;
+    QComboBox *cBox_autoBaud;
 
     void setupUi(QWidget *Widget)
     {
@@ -67,6 +75,8 @@ public:
         QFont font1;
         font1.setPointSize(9);
         tabWidget->setFont(font1);
+        tabWidget->setTabletTracking(false);
+        tabWidget->setAcceptDrops(false);
         tab_UI = new QWidget();
         tab_UI->setObjectName(QString::fromUtf8("tab_UI"));
         tLine_message = new QLineEdit(tab_UI);
@@ -166,38 +176,70 @@ public:
         tab_Set->setObjectName(QString::fromUtf8("tab_Set"));
         lable_quickCompelatList = new QLabel(tab_Set);
         lable_quickCompelatList->setObjectName(QString::fromUtf8("lable_quickCompelatList"));
-        lable_quickCompelatList->setGeometry(QRect(20, 97, 101, 21));
-        cBox_quickCompelatList = new QComboBox(tab_Set);
-        cBox_quickCompelatList->setObjectName(QString::fromUtf8("cBox_quickCompelatList"));
-        cBox_quickCompelatList->setGeometry(QRect(20, 130, 171, 24));
+        lable_quickCompelatList->setGeometry(QRect(20, 160, 101, 21));
         pButton_AddquickCompelat = new QPushButton(tab_Set);
         pButton_AddquickCompelat->setObjectName(QString::fromUtf8("pButton_AddquickCompelat"));
-        pButton_AddquickCompelat->setGeometry(QRect(20, 170, 71, 28));
+        pButton_AddquickCompelat->setGeometry(QRect(20, 430, 71, 28));
         pButton_delquickCompelat = new QPushButton(tab_Set);
         pButton_delquickCompelat->setObjectName(QString::fromUtf8("pButton_delquickCompelat"));
-        pButton_delquickCompelat->setGeometry(QRect(110, 170, 81, 28));
-        widget = new QWidget(tab_Set);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(20, 50, 164, 28));
-        horizontalLayout = new QHBoxLayout(widget);
+        pButton_delquickCompelat->setGeometry(QRect(120, 430, 81, 28));
+        checkBox_autoConect = new QCheckBox(tab_Set);
+        checkBox_autoConect->setObjectName(QString::fromUtf8("checkBox_autoConect"));
+        checkBox_autoConect->setGeometry(QRect(21, 90, 191, 21));
+        checkBox_autoConect->setAcceptDrops(true);
+        checkBox_autoConect->setTristate(true);
+        plaintEdit_quickCompleat = new QPlainTextEdit(tab_Set);
+        plaintEdit_quickCompleat->setObjectName(QString::fromUtf8("plaintEdit_quickCompleat"));
+        plaintEdit_quickCompleat->setGeometry(QRect(20, 190, 191, 231));
+        plaintEdit_quickCompleat->setCenterOnScroll(false);
+        checkBox_caseSensitive = new QCheckBox(tab_Set);
+        checkBox_caseSensitive->setObjectName(QString::fromUtf8("checkBox_caseSensitive"));
+        checkBox_caseSensitive->setGeometry(QRect(130, 160, 99, 22));
+        layoutWidget2 = new QWidget(tab_Set);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(21, 51, 134, 25));
+        horizontalLayout = new QHBoxLayout(layoutWidget2);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        label_colorlist = new QLabel(layoutWidget2);
+        label_colorlist->setObjectName(QString::fromUtf8("label_colorlist"));
+
+        horizontalLayout->addWidget(label_colorlist);
+
+        cBox_ColorList = new QComboBox(layoutWidget2);
+        cBox_ColorList->addItem(QString());
+        cBox_ColorList->addItem(QString());
+        cBox_ColorList->addItem(QString());
+        cBox_ColorList->addItem(QString());
+        cBox_ColorList->addItem(QString());
+        cBox_ColorList->setObjectName(QString::fromUtf8("cBox_ColorList"));
+
+        horizontalLayout->addWidget(cBox_ColorList);
+
+        widget = new QWidget(tab_Set);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(21, 117, 139, 25));
+        horizontalLayout_2 = new QHBoxLayout(widget);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         label = new QLabel(widget);
         label->setObjectName(QString::fromUtf8("label"));
 
-        horizontalLayout->addWidget(label);
+        horizontalLayout_2->addWidget(label);
 
-        comboBox = new QComboBox(widget);
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        cBox_autoBaud = new QComboBox(widget);
+        cBox_autoBaud->addItem(QString());
+        cBox_autoBaud->addItem(QString());
+        cBox_autoBaud->addItem(QString());
+        cBox_autoBaud->addItem(QString());
+        cBox_autoBaud->addItem(QString());
+        cBox_autoBaud->setObjectName(QString::fromUtf8("cBox_autoBaud"));
 
-        horizontalLayout->addWidget(comboBox);
+        horizontalLayout_2->addWidget(cBox_autoBaud);
 
         tabWidget->addTab(tab_Set, QString());
         QWidget::setTabOrder(pButton_send, tEdit_shell);
@@ -220,6 +262,9 @@ public:
         tLine_message->setText(QApplication::translate("Widget", "MessageWindow:", nullptr));
         pushButton_2->setText(QApplication::translate("Widget", "\346\211\223\345\274\200\344\270\262\345\217\243", nullptr));
         pushButton->setText(QApplication::translate("Widget", "\346\211\253\346\217\217\344\270\262\345\217\243/F5", nullptr));
+#ifndef QT_NO_SHORTCUT
+        pushButton->setShortcut(QApplication::translate("Widget", "F5", nullptr));
+#endif // QT_NO_SHORTCUT
         label_Baudlist->setText(QApplication::translate("Widget", "\346\263\242\347\211\271\347\216\207:", nullptr));
         cBox_Baudlist->setItemText(0, QApplication::translate("Widget", "4800", nullptr));
         cBox_Baudlist->setItemText(1, QApplication::translate("Widget", "9600", nullptr));
@@ -231,14 +276,26 @@ public:
         pButton_send->setText(QApplication::translate("Widget", "\345\217\221\351\200\201/Enter", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_UI), QApplication::translate("Widget", "\344\270\262\345\217\243\345\221\275\344\273\244\350\241\214", nullptr));
         lable_quickCompelatList->setText(QApplication::translate("Widget", "\345\277\253\346\215\267\350\241\245\345\205\250\345\210\227\350\241\250", nullptr));
-        pButton_AddquickCompelat->setText(QApplication::translate("Widget", "\346\226\260\345\242\236", nullptr));
+        pButton_AddquickCompelat->setText(QApplication::translate("Widget", "\345\272\224\347\224\250", nullptr));
+#ifndef QT_NO_SHORTCUT
+        pButton_AddquickCompelat->setShortcut(QApplication::translate("Widget", "Alt+S", nullptr));
+#endif // QT_NO_SHORTCUT
         pButton_delquickCompelat->setText(QApplication::translate("Widget", "\345\210\240\351\231\244\345\275\223\345\211\215", nullptr));
-        label->setText(QApplication::translate("Widget", "\345\255\227\344\275\223\351\242\234\350\211\262:", nullptr));
-        comboBox->setItemText(0, QApplication::translate("Widget", "RED", nullptr));
-        comboBox->setItemText(1, QApplication::translate("Widget", "BLACK", nullptr));
-        comboBox->setItemText(2, QApplication::translate("Widget", "BLUE", nullptr));
-        comboBox->setItemText(3, QApplication::translate("Widget", "GREEN", nullptr));
-        comboBox->setItemText(4, QApplication::translate("Widget", "YELLOW", nullptr));
+        checkBox_autoConect->setText(QApplication::translate("Widget", "\345\215\225\344\270\252\344\270\262\345\217\243\350\207\252\345\212\250\344\273\245\351\273\230\350\256\244\346\263\242\347\211\271\347\216\207\350\277\236\346\216\245", nullptr));
+        checkBox_caseSensitive->setText(QApplication::translate("Widget", "\345\244\247\345\260\217\345\206\231\346\225\217\346\204\237", nullptr));
+        label_colorlist->setText(QApplication::translate("Widget", "\345\255\227\344\275\223\351\242\234\350\211\262:", nullptr));
+        cBox_ColorList->setItemText(0, QApplication::translate("Widget", "RED", nullptr));
+        cBox_ColorList->setItemText(1, QApplication::translate("Widget", "WHITE", nullptr));
+        cBox_ColorList->setItemText(2, QApplication::translate("Widget", "BLUE", nullptr));
+        cBox_ColorList->setItemText(3, QApplication::translate("Widget", "GREEN", nullptr));
+        cBox_ColorList->setItemText(4, QApplication::translate("Widget", "YELLOW", nullptr));
+
+        label->setText(QApplication::translate("Widget", "\351\273\230\350\256\244\346\263\242\347\211\271\347\216\207:", nullptr));
+        cBox_autoBaud->setItemText(0, QApplication::translate("Widget", "4800", nullptr));
+        cBox_autoBaud->setItemText(1, QApplication::translate("Widget", "9600", nullptr));
+        cBox_autoBaud->setItemText(2, QApplication::translate("Widget", "115200", nullptr));
+        cBox_autoBaud->setItemText(3, QApplication::translate("Widget", "128000", nullptr));
+        cBox_autoBaud->setItemText(4, QApplication::translate("Widget", "256000", nullptr));
 
         tabWidget->setTabText(tabWidget->indexOf(tab_Set), QApplication::translate("Widget", "\350\256\276\347\275\256", nullptr));
     } // retranslateUi

@@ -212,6 +212,12 @@ debug/moc_widget.cpp: ../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QWidget
 		../../../../Qt/5.12.0/mingw73_64/include/QtSerialPort/QSerialPortInfo \
 		../../../../Qt/5.12.0/mingw73_64/include/QtSerialPort/qserialportinfo.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/QList \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QVector \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QTimer \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qtimer.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qbasictimer.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QSettings \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qsettings.h \
 		../shell/widget.h \
 		debug/moc_predefs.h \
 		../../../../Qt/5.12.0/mingw73_64/bin/moc.exe
@@ -350,6 +356,12 @@ debug/main.o: ../shell/main.cpp ../shell/widget.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtSerialPort/QSerialPortInfo \
 		../../../../Qt/5.12.0/mingw73_64/include/QtSerialPort/qserialportinfo.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/QList \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QVector \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QTimer \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qtimer.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qbasictimer.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QSettings \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qsettings.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QApplication \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qapplication.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qcoreapplication.h \
@@ -469,6 +481,12 @@ debug/widget.o: ../shell/widget.cpp ../shell/widget.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtSerialPort/QSerialPortInfo \
 		../../../../Qt/5.12.0/mingw73_64/include/QtSerialPort/qserialportinfo.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/QList \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QVector \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QTimer \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qtimer.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qbasictimer.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QSettings \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qsettings.h \
 		ui_widget.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QVariant \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QApplication \
@@ -478,6 +496,10 @@ debug/widget.o: ../shell/widget.cpp ../shell/widget.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qguiapplication.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QCheckBox \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qcheckbox.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qicon.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QComboBox \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qcombobox.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -485,7 +507,6 @@ debug/widget.o: ../shell/widget.cpp ../shell/widget.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qabstractspinbox.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qvalidator.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qregularexpression.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qicon.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qslider.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qabstractslider.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qstyle.h \
@@ -494,6 +515,7 @@ debug/widget.o: ../shell/widget.cpp ../shell/widget.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qrubberband.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qframe.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QFrame \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QHBoxLayout \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qboxlayout.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qlayout.h \
@@ -501,17 +523,30 @@ debug/widget.o: ../shell/widget.cpp ../shell/widget.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qgridlayout.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QLabel \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qlabel.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QTextEdit \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QLineEdit \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qlineedit.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextcursor.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextformat.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qpen.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextoption.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QPlainTextEdit \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qplaintextedit.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qtextedit.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextdocument.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qpen.h
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qabstracttextdocumentlayout.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextlayout.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qglyphrun.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qrawfont.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qfontdatabase.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QTabWidget \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QTextEdit \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QDebug \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/QTextLayout \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QScrollBar \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qscrollbar.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\widget.o ..\shell\widget.cpp
 
 debug/moc_widget.o: debug/moc_widget.cpp 

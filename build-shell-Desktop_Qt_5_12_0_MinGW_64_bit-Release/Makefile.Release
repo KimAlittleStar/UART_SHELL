@@ -17,13 +17,13 @@ CXXFLAGS      = -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wall -W -Wextra -fe
 INCPATH       = -I..\shell -I. -I..\..\..\..\Qt\5.12.0\mingw73_64\include -I..\..\..\..\Qt\5.12.0\mingw73_64\include\QtWidgets -I..\..\..\..\Qt\5.12.0\mingw73_64\include\QtGui -I..\..\..\..\Qt\5.12.0\mingw73_64\include\QtANGLE -I..\..\..\..\Qt\5.12.0\mingw73_64\include\QtSerialPort -I..\..\..\..\Qt\5.12.0\mingw73_64\include\QtCore -Irelease -I. -I\include -I..\..\..\..\Qt\5.12.0\mingw73_64\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        -LD:\Qt\5.12.0\mingw73_64\lib D:\Qt\5.12.0\mingw73_64\lib\libQt5Widgets.a D:\Qt\5.12.0\mingw73_64\lib\libQt5Gui.a D:\Qt\5.12.0\mingw73_64\lib\libQt5SerialPort.a D:\Qt\5.12.0\mingw73_64\lib\libQt5Core.a  -lmingw32 D:\Qt\5.12.0\mingw73_64\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.6.11-winx64\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 -LD:\Qt\5.12.0\mingw73_64\lib D:\Qt\5.12.0\mingw73_64\lib\libQt5Core.a 
+LIBS        =        -LD:\Qt\5.12.0\mingw73_64\lib D:\Qt\5.12.0\mingw73_64\lib\libQt5Widgets.a D:\Qt\5.12.0\mingw73_64\lib\libQt5Gui.a D:\Qt\5.12.0\mingw73_64\lib\libQt5SerialPort.a D:\Qt\5.12.0\mingw73_64\lib\libQt5Core.a release\shell_resource_res.o  -lmingw32 D:\Qt\5.12.0\mingw73_64\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.6.11-winx64\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 -LD:\Qt\5.12.0\mingw73_64\lib D:\Qt\5.12.0\mingw73_64\lib\libQt5Core.a 
 QMAKE         = D:\Qt\5.12.0\mingw73_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = release\shell_resource_res.o
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = copy /y
@@ -63,8 +63,11 @@ DESTDIR_TARGET = release\shell.exe
 first: all
 all: Makefile.Release  release/shell.exe
 
-release/shell.exe: ui_widget.h $(OBJECTS) 
+release/shell.exe: ui_widget.h $(OBJECTS) release/shell_resource_res.o
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
+
+release/shell_resource_res.o: shell_resource.rc
+	windres -i shell_resource.rc -o release\shell_resource_res.o --include-dir=. $(DEFINES)
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Release ..\shell\shell.pro -spec win32-g++ "CONFIG+=qtquickcompiler"
@@ -76,6 +79,7 @@ dist:
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\main.o release\widget.o release\moc_widget.o
+	-$(DEL_FILE) release\shell_resource_res.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -218,6 +222,11 @@ release/moc_widget.cpp: ../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QWidg
 		../../../../Qt/5.12.0/mingw73_64/include/QtSerialPort/qserialportinfo.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/QList \
 		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QVector \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QTimer \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qtimer.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qbasictimer.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QSettings \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qsettings.h \
 		../shell/widget.h \
 		release/moc_predefs.h \
 		../../../../Qt/5.12.0/mingw73_64/bin/moc.exe
@@ -357,6 +366,11 @@ release/main.o: ../shell/main.cpp ../shell/widget.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtSerialPort/qserialportinfo.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/QList \
 		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QVector \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QTimer \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qtimer.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qbasictimer.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QSettings \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qsettings.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QApplication \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qapplication.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qcoreapplication.h \
@@ -477,25 +491,71 @@ release/widget.o: ../shell/widget.cpp ../shell/widget.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtSerialPort/qserialportinfo.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/QList \
 		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QVector \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QTimer \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qtimer.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qbasictimer.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QSettings \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qsettings.h \
 		ui_widget.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QDebug \
-		../../../../Qt/5.12.0/mingw73_64/include/QtGui/QTextLayout \
-		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextlayout.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QVariant \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QCheckBox \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qcheckbox.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qicon.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QComboBox \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qcombobox.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qslider.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qstyle.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qtabbar.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qtabwidget.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qrubberband.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QFrame \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qlayout.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QLineEdit \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qlineedit.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextcursor.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextformat.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qpen.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextoption.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QPlainTextEdit \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qplaintextedit.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qtextedit.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextdocument.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qabstracttextdocumentlayout.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextlayout.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qglyphrun.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qrawfont.h \
 		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qfontdatabase.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextcursor.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QTabWidget \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QTextEdit \
-		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtGui/qtextdocument.h \
+		../../../../Qt/5.12.0/mingw73_64/include/QtCore/QDebug \
+		../../../../Qt/5.12.0/mingw73_64/include/QtGui/QTextLayout \
 		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/QScrollBar \
-		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qscrollbar.h \
-		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qabstractslider.h
+		../../../../Qt/5.12.0/mingw73_64/include/QtWidgets/qscrollbar.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\widget.o ..\shell\widget.cpp
 
 release/moc_widget.o: release/moc_widget.cpp 
